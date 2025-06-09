@@ -4,9 +4,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function ParentZone() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-alice-blue">
       {/* Hero Section */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="container mx-auto text-center">
           <h1 className="font-comic text-4xl md:text-6xl font-bold text-[hsl(var(--discovery-blue))] mb-4">
             👨‍👩‍👧‍👦 Parent & Teacher Zone

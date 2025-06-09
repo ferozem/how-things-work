@@ -53,10 +53,10 @@ export default function Experiments() {
                 key={difficulty}
                 onClick={() => setSelectedDifficulty(difficulty)}
                 variant={selectedDifficulty === difficulty ? "default" : "outline"}
-                className={`rounded-full px-6 py-2 font-bold transition-colors ${
-                  selectedDifficulty === difficulty 
-                    ? "bg-[hsl(var(--discovery-blue))] text-white" 
-                    : "bg-white text-[hsl(var(--dark-slate))] border-[hsl(var(--discovery-blue))] hover:bg-[hsl(var(--discovery-blue))] hover:text-white"
+                className={`rounded-full px-6 py-2 font-bold transition-colors border-2 ${
+                  selectedDifficulty === difficulty
+                    ? "bg-blue-600 text-white border-blue-600 shadow-lg"
+                    : "bg-white text-gray-800 border-blue-600 hover:bg-blue-600 hover:text-white shadow-md"
                 }`}
               >
                 {difficulty === "all" ? "All Levels" : difficulty}

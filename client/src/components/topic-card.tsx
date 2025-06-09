@@ -33,12 +33,12 @@ export default function TopicCard({ topic }: TopicCardProps) {
             <img 
               src={(() => {
                 const images = {
-                  1: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=200&h=200&fit=crop&crop=center",
-                  2: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=200&h=200&fit=crop&crop=center",
-                  3: "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=200&h=200&fit=crop&crop=center",
-                  4: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=200&h=200&fit=crop&crop=center",
-                  5: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?w=200&h=200&fit=crop&crop=center",
-                  6: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=200&h=200&fit=crop&crop=center"
+                  1: "https://source.unsplash.com/200x200/?machine",
+                  2: "https://source.unsplash.com/200x200/?nature",
+                  3: "https://source.unsplash.com/200x200/?space",
+                  4: "https://source.unsplash.com/200x200/?biology",
+                  5: "https://source.unsplash.com/200x200/?science",
+                  6: "https://source.unsplash.com/200x200/?technology"
                 };
                 return images[topic.id as keyof typeof images] || images[1];
               })()} 
