@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(240, 100%, 98%);
+  --foreground: hsl(47, 20%, 31%);
+  --muted: hsl(210, 40%, 96%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(47, 20%, 31%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(47, 20%, 31%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(210, 40%, 96%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(207, 90%, 54%);
+  --radius: 0.5rem;
+  
+  /* Discovery Kids Custom Colors */
+  --discovery-blue: hsl(207, 90%, 54%);
+  --bright-yellow: hsl(51, 100%, 50%);
+  --lime-green: hsl(120, 61%, 50%);
+  --alice-blue: hsl(208, 100%, 97%);
+  --dark-slate: hsl(180, 25%, 25%);
+  --tomato-red: hsl(9, 100%, 64%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-[hsl(var(--alice-blue))] text-[hsl(var(--dark-slate))];
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Comic Neue', cursive;
+  }
+}
+
+@layer utilities {
+  .discovery-blue {
+    color: hsl(var(--discovery-blue));
+  }
+  
+  .bg-discovery-blue {
+    background-color: hsl(var(--discovery-blue));
+  }
+  
+  .bright-yellow {
+    color: hsl(var(--bright-yellow));
+  }
+  
+  .bg-bright-yellow {
+    background-color: hsl(var(--bright-yellow));
+  }
+  
+  .lime-green {
+    color: hsl(var(--lime-green));
+  }
+  
+  .bg-lime-green {
+    background-color: hsl(var(--lime-green));
+  }
+  
+  .alice-blue {
+    color: hsl(var(--alice-blue));
+  }
+  
+  .bg-alice-blue {
+    background-color: hsl(var(--alice-blue));
+  }
+  
+  .dark-slate {
+    color: hsl(var(--dark-slate));
+  }
+  
+  .bg-dark-slate {
+    background-color: hsl(var(--dark-slate));
+  }
+  
+  .tomato-red {
+    color: hsl(var(--tomato-red));
+  }
+  
+  .bg-tomato-red {
+    background-color: hsl(var(--tomato-red));
+  }
+
+  .exploration-bg {
+    background-image: 
+      radial-gradient(circle at 20% 20%, hsl(207, 90%, 54%, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, hsl(51, 100%, 50%, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 60%, hsl(120, 61%, 50%, 0.1) 0%, transparent 50%);
+  }
+
+  .animate-bounce-slow {
+    animation: bounce 2s infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s infinite;
+  }
+
+  .animate-wiggle {
+    animation: wiggle 1s ease-in-out infinite;
+  }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+
+  .font-comic {
+    font-family: 'Comic Neue', cursive;
+  }
+}
+
+
