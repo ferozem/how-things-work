@@ -742,7 +742,12 @@ export class MemStorage implements IStorage {
 
   async createTopic(insertTopic: InsertTopic): Promise<Topic> {
     const id = this.currentTopicId++;
-    const topic: Topic = { ...insertTopic, id };
+    const topic: Topic = {
+      id,
+      topicCount: 0,
+      gameCount: 0,
+      ...insertTopic,
+    };
     this.topics.set(id, topic);
     return topic;
   }
@@ -766,7 +771,12 @@ export class MemStorage implements IStorage {
 
   async createVideo(insertVideo: InsertVideo): Promise<Video> {
     const id = this.currentVideoId++;
-    const video: Video = { ...insertVideo, id };
+    const video: Video = {
+      id,
+      featured: false,
+      topicId: null,
+      ...insertVideo,
+    };
     this.videos.set(id, video);
     return video;
   }
@@ -786,7 +796,11 @@ export class MemStorage implements IStorage {
 
   async createGame(insertGame: InsertGame): Promise<Game> {
     const id = this.currentGameId++;
-    const game: Game = { ...insertGame, id };
+    const game: Game = {
+      id,
+      topicId: null,
+      ...insertGame,
+    };
     this.games.set(id, game);
     return game;
   }
@@ -818,7 +832,11 @@ export class MemStorage implements IStorage {
 
   async createQuiz(insertQuiz: InsertQuiz): Promise<Quiz> {
     const id = this.currentQuizId++;
-    const quiz: Quiz = { ...insertQuiz, id };
+    const quiz: Quiz = {
+      id,
+      featured: false,
+      ...insertQuiz,
+    };
     this.quizzes.set(id, quiz);
     return quiz;
   }
@@ -834,7 +852,11 @@ export class MemStorage implements IStorage {
 
   async createFunFact(insertFunFact: InsertFunFact): Promise<FunFact> {
     const id = this.currentFunFactId++;
-    const funFact: FunFact = { ...insertFunFact, id };
+    const funFact: FunFact = {
+      id,
+      featured: false,
+      ...insertFunFact,
+    };
     this.funFacts.set(id, funFact);
     return funFact;
   }
