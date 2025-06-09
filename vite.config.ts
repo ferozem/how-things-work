@@ -8,7 +8,10 @@ const dirname = typeof import.meta.dirname !== "undefined"
   : path.dirname(fileURLToPath(import.meta.url));
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
+const base = process.env.NODE_ENV === "production" ? "/how-things-work/" : "/";
+
 export default defineConfig({
+  base,
   plugins: [
     react(),
     runtimeErrorOverlay(),
