@@ -66,9 +66,23 @@ client (React) ---> Express API (server) ---> in-memory storage (MemStorage)
    ```
    - The compiled server will serve the built client from `dist/public` on port 5000.
 
+## Deploying the Express API
+
+To serve data in production you need to run the compiled Express server on a host that supports Node.js (Replit, Render, Vercel and similar services all work). The build step creates the server bundle in `dist/index.js` and the static client in `dist/public`.
+
+1. Build the project if you have not already:
+   ```bash
+   npm run build
+   ```
+2. Copy the `dist` folder to your server and run:
+   ```bash
+   npm start
+   ```
+   The server listens on **port 5000** and serves both the API and the prebuilt React files.
+
 ## Deploying the Client to GitHub Pages
 
-GitHub Pages can host only static files, so you can deploy the **frontend** there. The API would need to be hosted separately.
+GitHub Pages can host only static files, so you can deploy the **frontend** there. The API must be hosted separately (for example on Render, Vercel or any other Node hosting provider) if you want the dynamic data to work.
 
 1. Build the project:
    ```bash
@@ -83,5 +97,14 @@ GitHub Pages can host only static files, so you can deploy the **frontend** ther
    ```
 4. In your GitHub repository settings, enable GitHub Pages and select the `gh-pages` branch as the source.
 
-After the branch is published, GitHub Pages will serve the static client. Remember that API requests will need to target a separately hosted server or be replaced with static data for the pages to function.
+After the branch is published, GitHub Pages will serve the static client. Configure your frontend to call the URL where the Express server is hosted.
+
+### Fixing Routing on GitHub Pages
+
+When deploying to GitHub Pages you may see a blank page or 404 errors after refreshing. Two fixes are required:
+
+1. **Base path** – `vite.config.ts` sets the `base` option to `/how-things-work/` when `NODE_ENV` is `production`. `App.tsx` wraps the routes in `WouterRouter` using `import.meta.env.BASE_URL` so links resolve correctly.
+2. **404 redirect** – A custom `client/public/404.html` file redirects unknown routes back to the site's base path so the SPA router can take over.
+
+With these changes the React router works correctly from any page on GitHub Pages.
 
