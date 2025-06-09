@@ -97,7 +97,7 @@ GitHub Pages can host only static files, so you can deploy the **frontend** ther
    ```
 4. In your GitHub repository settings, enable GitHub Pages and select the `gh-pages` branch as the source.
 
-After the branch is published, GitHub Pages will serve the static client. Configure your frontend to call the URL where the Express server is hosted.
+After the branch is published, GitHub Pages will serve the static client. Set the `VITE_API_BASE_URL` environment variable in the frontend build to the URL where the Express server is hosted so API requests resolve correctly.
 
 ### Fixing Routing on GitHub Pages
 
