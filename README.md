@@ -50,7 +50,7 @@ client (React) ---> Express API (server) ---> in-memory storage (MemStorage)
    ```bash
    npm run dev
    ```
-   - Open <http://localhost:5000> in your browser. The Express API and React client run together.
+   - Open <http://localhost:5000> in your browser. The Express API and React client run together. Environment variables are set with **cross-env** so the command works on Windows, macOS and Linux.
 4. **Run TypeScript check (optional)**
    ```bash
    npm run check
