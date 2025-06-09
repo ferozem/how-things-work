@@ -79,6 +79,9 @@ To serve data in production you need to run the compiled Express server on a hos
    npm start
    ```
    The server listens on **port 5000** and serves both the API and the prebuilt React files.
+   If your client is hosted on a different domain (for example GitHub Pages), set the
+   `CORS_ORIGIN` environment variable to that domain so cross‑origin requests work
+   when using cookies.
 
 ## Deploying the Client to GitHub Pages
 
