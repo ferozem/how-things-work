@@ -58,12 +58,12 @@ export default function TopicPage() {
           <img 
             src={(() => {
               const heroImages = {
-                1: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1200&h=600&fit=crop",
-                2: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=600&fit=crop", 
-                3: "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1200&h=600&fit=crop",
-                4: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&h=600&fit=crop",
-                5: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?w=1200&h=600&fit=crop",
-                6: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1200&h=600&fit=crop"
+                1: "https://source.unsplash.com/1200x600/?machine",
+                2: "https://source.unsplash.com/1200x600/?nature",
+                3: "https://source.unsplash.com/1200x600/?space",
+                4: "https://source.unsplash.com/1200x600/?biology",
+                5: "https://source.unsplash.com/1200x600/?science",
+                6: "https://source.unsplash.com/1200x600/?technology"
               };
               return heroImages[topic.id as keyof typeof heroImages] || heroImages[1];
             })()} 
@@ -131,43 +131,59 @@ export default function TopicPage() {
                   title: "How Car Engines Work",
                   icon: "fas fa-car",
                   color: "bg-red-500",
-                  content: "Car engines are amazing! They work by creating tiny explosions inside cylinders. These explosions push pistons up and down, which turns the crankshaft and makes the wheels spin. It's like having hundreds of tiny fireworks going off every minute to power your car!"
+                  image: "https://source.unsplash.com/400x300/?car-engine",
+                  content:
+                    "Car engines are amazing! They work by creating tiny explosions inside cylinders. These explosions push pistons up and down, which turns the crankshaft and makes the wheels spin. It's like having hundreds of tiny fireworks going off every minute to power your car!",
                 },
                 {
                   title: "The Magic of Computers",
                   icon: "fas fa-microchip",
                   color: "bg-blue-500",
-                  content: "Computers are super smart machines that think using electricity! They understand everything as 1s and 0s (called binary). The CPU is like the brain, RAM is like short-term memory, and the hard drive stores everything permanently. Your computer can do billions of calculations every second!"
+                  image: "https://source.unsplash.com/400x300/?computer",
+                  content:
+                    "Computers are super smart machines that think using electricity! They understand everything as 1s and 0s (called binary). The CPU is like the brain, RAM is like short-term memory, and the hard drive stores everything permanently. Your computer can do billions of calculations every second!",
                 },
                 {
                   title: "How Robots Move",
                   icon: "fas fa-robot",
                   color: "bg-purple-500",
-                  content: "Robots have sensors like eyes and ears to see and hear the world around them. They use motors and gears to move their arms and legs, just like your muscles move your body. A computer brain tells them what to do based on their programming!"
+                  image: "https://source.unsplash.com/400x300/?robot",
+                  content:
+                    "Robots have sensors like eyes and ears to see and hear the world around them. They use motors and gears to move their arms and legs, just like your muscles move your body. A computer brain tells them what to do based on their programming!",
                 },
                 {
                   title: "Simple Machines: Levers",
                   icon: "fas fa-balance-scale",
                   color: "bg-green-500",
-                  content: "Levers help us lift heavy things with less effort! Think of a seesaw - when you push down on one side, the other side goes up. Bottle openers, scissors, and crowbars are all levers that make work easier for us!"
+                  image: "https://source.unsplash.com/400x300/?lever",
+                  content:
+                    "Levers help us lift heavy things with less effort! Think of a seesaw - when you push down on one side, the other side goes up. Bottle openers, scissors, and crowbars are all levers that make work easier for us!",
                 },
                 {
                   title: "The Power of Wheels",
                   icon: "fas fa-circle",
                   color: "bg-orange-500",
-                  content: "Wheels are one of the most important inventions ever! They reduce friction, making it easy to move heavy objects. Cars, bicycles, shopping carts, and even computer mice use wheels to help us move things around!"
+                  image: "https://source.unsplash.com/400x300/?wheel",
+                  content:
+                    "Wheels are one of the most important inventions ever! They reduce friction, making it easy to move heavy objects. Cars, bicycles, shopping carts, and even computer mice use wheels to help us move things around!",
                 },
                 {
                   title: "Pulleys and Lifting",
                   icon: "fas fa-anchor",
                   color: "bg-pink-500",
-                  content: "Pulleys use ropes and wheels to help us lift heavy things! By using multiple pulleys together, you can lift something that weighs much more than you do. Cranes, elevators, and flagpoles all use pulleys!"
+                  image: "https://source.unsplash.com/400x300/?pulley",
+                  content:
+                    "Pulleys use ropes and wheels to help us lift heavy things! By using multiple pulleys together, you can lift something that weighs much more than you do. Cranes, elevators, and flagpoles all use pulleys!",
                 }
-              ].map((item, index) => (
+                ].map((item, index) => (
                 <Card key={index} className="hover:shadow-xl transition-all duration-300 cursor-pointer group">
                   <CardContent className="p-6">
-                    <div className={`w-16 h-16 ${item.color} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
-                      <i className={`${item.icon} text-white text-2xl`}></i>
+                    <div className={`w-16 h-16 ${item.color} rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden group-hover:scale-110 transition-transform`}>
+                      {item.image ? (
+                        <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                      ) : (
+                        <i className={`${item.icon} text-white text-2xl`}></i>
+                      )}
                     </div>
                     <h3 className="font-comic text-xl font-bold text-center mb-3">{item.title}</h3>
                     <p className="text-[hsl(var(--dark-slate))] text-sm leading-relaxed">

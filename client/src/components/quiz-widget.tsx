@@ -10,11 +10,11 @@ export default function QuizWidget({ quiz }: QuizWidgetProps) {
 
   return (
     <section className="py-12 px-4 bg-gradient-to-r from-[hsl(var(--discovery-blue))] to-purple-600">
-      <div className="container mx-auto text-center text-white">
-        <h2 className="font-comic text-3xl md:text-4xl font-bold mb-6">
+      <div className="container mx-auto text-center text-white drop-shadow">
+        <h2 className="font-comic text-3xl md:text-4xl font-bold mb-6 text-yellow-100">
           🏆 Weekly Challenge Quiz!
         </h2>
-        <p className="text-xl mb-8 max-w-2xl mx-auto">
+        <p className="text-xl mb-8 max-w-2xl mx-auto text-yellow-50">
           Test your knowledge and earn cool badges! This week's topic: {quiz.category}
         </p>
         

@@ -19,14 +19,31 @@ client (React) ---> Express API (server) ---> in-memory storage (MemStorage)
 
 ## Backend Details
 
-- API endpoints are defined in `server/routes.ts`. Examples:
-  - `GET /api/topics` – list topics
-  - `GET /api/videos/featured` – featured videos
-  - `GET /api/games` – list games
-  - `GET /api/quizzes/featured` – featured quiz
-  - `GET /api/fun-facts/featured` – daily fun fact
-- All data comes from `server/storage.ts` which implements the `MemStorage` class. Data is loaded when the server starts and is **not persisted** between restarts.
+- All REST endpoints are defined in `server/routes.ts` and served from `/api`.
+- Data is loaded from `server/storage.ts` into an in-memory `MemStorage` class when the server starts and is **not persisted** between restarts.
 - The server always runs on port **5000**.
+
+### API Reference
+
+The table below lists every available endpoint. All routes return JSON.
+
+| Method | Endpoint | Description |
+| ------ | -------- | ----------- |
+| `GET`  | `/api/topics` | List all topics |
+| `GET`  | `/api/topics/:id` | Get a single topic by id |
+| `GET`  | `/api/videos` | List all videos |
+| `GET`  | `/api/videos/featured` | Get featured videos |
+| `GET`  | `/api/videos/category/:category` | Videos filtered by category |
+| `GET`  | `/api/videos/topic/:topicId` | Videos for a topic |
+| `GET`  | `/api/games` | List all games |
+| `GET`  | `/api/games/category/:category` | Games filtered by category |
+| `GET`  | `/api/games/topic/:topicId` | Games for a topic |
+| `GET`  | `/api/experiments` | List all experiments |
+| `GET`  | `/api/experiments/category/:category` | Experiments filtered by category |
+| `GET`  | `/api/quizzes` | List all quizzes |
+| `GET`  | `/api/quizzes/featured` | Get the featured quiz |
+| `GET`  | `/api/fun-facts` | List all fun facts |
+| `GET`  | `/api/fun-facts/featured` | Get the featured fun fact |
 
 ## Frontend Details
 
@@ -83,6 +100,17 @@ To serve data in production you need to run the compiled Express server on a hos
    `CORS_ORIGIN` environment variable to that domain so cross‑origin requests work
    when using cookies.
 
+### Deploying to Render
+
+1. Push your code to GitHub.
+2. Log in to [Render](https://render.com) and create a **New Web Service** from your repository.
+3. Set the **Build Command** to `npm run build` and the **Start Command** to `npm start`.
+4. Add environment variables under the **Environment** section:
+   - `CORS_ORIGIN` – domain where the frontend is hosted (e.g. `https://yourname.github.io`).
+   - `DATABASE_URL` – if you use a Postgres database.
+5. Click **Create Web Service** and wait for the build to finish. Render will provide a URL like `https://your-service.onrender.com`.
+6. Use that URL for the frontend's `VITE_API_BASE_URL` when building the client.
+
 ## Deploying the Client to GitHub Pages
 
 GitHub Pages can host only static files, so you can deploy the **frontend** there. The API must be hosted separately (for example on Render, Vercel or any other Node hosting provider) if you want the dynamic data to work.
@@ -110,4 +138,29 @@ When deploying to GitHub Pages you may see a blank page or 404 errors after refr
 2. **404 redirect** – A custom `client/public/404.html` file redirects unknown routes back to the site's base path so the SPA router can take over.
 
 With these changes the React router works correctly from any page on GitHub Pages.
+
+## Switching Between Local and Remote APIs
+
+The frontend reads the base URL for all API requests from the environment variable `VITE_API_BASE_URL`.
+
+* **Local development** – leave `VITE_API_BASE_URL` empty to use the Express API running on `localhost:5000`.
+* **Remote API** – set `VITE_API_BASE_URL` to the URL of your deployed backend (for example `https://your-service.onrender.com`). When you run `npm run build` the value will be embedded into the bundled client.
+
+Create a `.env` file (or configure environment variables on your hosting provider) with the desired value:
+
+```bash
+VITE_API_BASE_URL=https://your-service.onrender.com
+```
+
+This toggle lets you switch the data source without changing code.
+
+## Fixing CORS Errors
+
+When the frontend and backend run on different domains you must allow cross-origin requests. Set `CORS_ORIGIN` on the server to the domain of your frontend:
+
+```bash
+CORS_ORIGIN=https://yourname.github.io
+```
+
+Multiple origins can be specified by comma separating them. Restart the server after changing this value.
 
