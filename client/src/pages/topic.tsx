@@ -58,12 +58,12 @@ export default function TopicPage() {
           <img 
             src={(() => {
               const heroImages = {
-                1: "https://source.unsplash.com/1200x600/?machine",
-                2: "https://source.unsplash.com/1200x600/?nature",
-                3: "https://source.unsplash.com/1200x600/?space",
-                4: "https://source.unsplash.com/1200x600/?biology",
-                5: "https://source.unsplash.com/1200x600/?science",
-                6: "https://source.unsplash.com/1200x600/?technology"
+                  1: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=200&h=200&fit=crop&crop=center",
+                  2: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=200&h=200&fit=crop&crop=center",
+                  3: "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=200&h=200&fit=crop&crop=center",
+                  4: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=200&h=200&fit=crop&crop=center",
+                  5: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?w=200&h=200&fit=crop&crop=center",
+                  6: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=200&h=200&fit=crop&crop=center"
               };
               return heroImages[topic.id as keyof typeof heroImages] || heroImages[1];
             })()} 
@@ -131,7 +131,7 @@ export default function TopicPage() {
                   title: "How Car Engines Work",
                   icon: "fas fa-car",
                   color: "bg-red-500",
-                  image: "https://source.unsplash.com/400x300/?car-engine",
+                  image: "https://images.unsplash.com/photo-1704340142770-b52988e5b6eb?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                   content:
                     "Car engines are amazing! They work by creating tiny explosions inside cylinders. These explosions push pistons up and down, which turns the crankshaft and makes the wheels spin. It's like having hundreds of tiny fireworks going off every minute to power your car!",
                 },
@@ -139,7 +139,7 @@ export default function TopicPage() {
                   title: "The Magic of Computers",
                   icon: "fas fa-microchip",
                   color: "bg-blue-500",
-                  image: "https://source.unsplash.com/400x300/?computer",
+                  image: "https://unsplash.com/photos/macbook-pro-turned-on-Bd7gNnWJBkU?w=128&h=128&fit=crop",
                   content:
                     "Computers are super smart machines that think using electricity! They understand everything as 1s and 0s (called binary). The CPU is like the brain, RAM is like short-term memory, and the hard drive stores everything permanently. Your computer can do billions of calculations every second!",
                 },
