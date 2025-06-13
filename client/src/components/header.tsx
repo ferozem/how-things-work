@@ -71,7 +71,7 @@ export default function Header() {
                 <div className="flex flex-col space-y-6 mt-8">
                   <div className="flex items-center space-x-3 mb-6">
                     <div className="w-10 h-10 bg-[hsl(var(--discovery-blue))] rounded-full flex items-center justify-center">
-                      <i className="fa-solid fa-lightbulb text-white">what is this</i>
+                      <i className="fa-solid fa-lightbulb text-white"></i>
                     </div>
                     <div>
                       <h2 className="font-comic text-lg font-bold text-[hsl(var(--discovery-blue))]">Discovery Kids</h2>
