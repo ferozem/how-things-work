@@ -25,12 +25,18 @@
   --radius: 0.5rem;
   
   /* Discovery Kids Custom Colors */
-  --discovery-blue: hsl(207, 90%, 54%);
-  --bright-yellow: hsl(51, 100%, 50%);
-  --lime-green: hsl(120, 61%, 50%);
-  --alice-blue: hsl(208, 100%, 97%);
-  --dark-slate: hsl(180, 25%, 25%);
-  --tomato-red: hsl(9, 100%, 64%);
+  /*
+    These custom color variables are stored as raw HSL values so they can be
+    interpolated with `hsl(var(--color))` in utility classes. Storing the values
+    without the `hsl()` wrapper prevents invalid `hsl(hsl(...))` output when the
+    variables are used inside Tailwind's arbitrary value syntax.
+  */
+  --discovery-blue: 207 90% 54%;
+  --bright-yellow: 51 100% 50%;
+  --lime-green: 120 61% 50%;
+  --alice-blue: 208 100% 97%;
+  --dark-slate: 180 25% 25%;
+  --tomato-red: 9 100% 64%;
 }
 
 .dark {
